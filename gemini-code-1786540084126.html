@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELA Foundations — Week 1, Day 1 | Chisholm High School</title>
+  <style>
+    :root {
+      --primary: #15803d;        /* Green Accent */
+      --primary-dark: #166534;   /* Dark Green Accent */
+      --primary-light: #f0fdf4;  /* Light Green Background */
+      --bg-main: #f8fafc;
+      --card-bg: #ffffff;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+      --border: #cbd5e1;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-main);
+      margin: 0;
+      padding: 20px;
+      color: var(--text-dark);
+    }
+
+    .container { max-width: 980px; margin: 0 auto; }
+
+    /* Header Section */
+    .header-card {
+      background: var(--card-bg);
+      padding: 20px 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin-bottom: 20px;
+      border-top: 5px solid var(--primary);
+    }
+
+    .header-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo-box {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .stamp-box {
+      width: 75px;
+      height: 75px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stamp-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Tabs */
+    .nav-tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+    .tab-btn {
+      flex: 1;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      font-weight: bold;
+      font-size: 0.95em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #334155;
+    }
+    .tab-btn:hover { background: #f1f5f9; }
+    .tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin-bottom: 20px;
+    }
+
+    /* Slide Deck Layout */
+    .bellringer-box {
+      background: var(--primary-light);
+      border-left: 4px solid var(--primary);
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .slide-stage {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .slide { display: none; }
+    .slide.active { display: block; }
+
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+    }
+
+    .slide-title { margin: 0; font-size: 1.35em; color: var(--text-dark); }
+
+    .std-badge {
+      background: #dcfce7;
+      color: var(--primary-dark);
+      font-size: 0.78em;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #bbf7d0;
+      white-space: nowrap;
+    }
+
+    .slide-body {
+      line-height: 1.65;
+      color: #334155;
+    }
+    .slide-body ul { padding-left: 20px; margin: 0; }
+    .slide-body li { margin-bottom: 12px; }
+
+    .callout-box {
+      margin-top: 18px;
+      padding: 12px 16px;
+      border-radius: 6px;
+      background: #f0fdf4;
+      border-left: 4px solid var(--primary);
+      font-size: 0.9em;
+    }
+
+    .ctrl-btn {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 10px 22px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .ctrl-btn:hover { background: var(--primary-dark); }
+    .ctrl-btn:disabled { background: #94a3b8; cursor: not-allowed; }
+
+    /* Resource Hub Styling */
+    .resource-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Checkpoint Form Styling */
+    .form-group {
+      margin-bottom: 22px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .form-group h4 {
+      margin: 0 0 10px 0;
+      color: var(--primary-dark);
+      font-size: 0.95em;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    label { display: block; font-weight: bold; margin-bottom: 6px; font-size: 0.88em; }
+    input[type="text"], input[type="date"], select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+
+    .rating-options {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .rating-options label {
+      font-weight: normal;
+      background: #f1f5f9;
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .checkbox-item {
+      background: #f8fafc;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid #e2e8f0;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      padding: 14px;
+      font-size: 1.05em;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .submit-btn:hover { background: var(--primary-dark); }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header -->
+  <div class="header-card">
+    <div class="header-flex">
+      <div class="header-left">
+        <div class="logo-box">
+          <img src="Chisholmlogo.png" alt="Chisholm Logo" onerror="this.onerror=null; this.parentNode.innerHTML='<div style=\'background:#15803d;color:#fff;padding:12px;font-weight:bold;border-radius:6px;\'>CHS</div>';" />
+        </div>
+        <div>
+          <h2 style="margin: 0; font-size: 1.35em;">ELA Foundations — Week 1, Day 1</h2>
+          <p style="margin: 4px 0 0 0; color: var(--text-muted); font-size: 0.9em;">Course Orientation, Diagnostic Assessment & O.T.I.S. Studio Framework</p>
+        </div>
+      </div>
+      <div class="stamp-box">
+        <img src="boehm-stamp.svg" alt="Teacher Stamp" onerror="this.onerror=null; this.parentNode.innerHTML='<div style=\'border:2px dashed #15803d;padding:8px;font-size:0.7em;color:#15803d;font-weight:bold;text-align:center;\'>BOEHM CLASSROOM</div>';" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Tabs -->
+  <div class="nav-tabs">
+    <button type="button" class="tab-btn active" onclick="switchTab('deck')">📖 Curriculum Slide Deck</button>
+    <button type="button" class="tab-btn" onclick="switchTab('res')">📂 Resource Hub</button>
+    <button type="button" class="tab-btn" onclick="switchTab('form')">✍️ Student Work Checkpoint</button>
+  </div>
+
+  <!-- TAB 1: CURRICULUM SLIDE DECK -->
+  <div id="deck-tab" class="card tab-content active">
+    <!-- Randomized Bellringer Banner -->
+    <div class="bellringer-box">
+      <div>
+        <strong style="color: var(--primary-dark); font-size: 0.9em;">🔔 Daily Bellringer Writing Prompt</strong>
+        <p id="bellringer-display" style="margin: 4px 0 0 0; font-size: 0.92em; font-style: italic;">Loading prompt...</p>
+      </div>
+      <button type="button" onclick="randomizeBellringer()" class="ctrl-btn" style="padding: 6px 12px; font-size: 0.8em; white-space: nowrap;">🔀 Shuffle</button>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+      <h3 style="margin: 0; font-size: 1.1em;">Unit 1: Foundations of Word Parts & Text Mechanics</h3>
+      <span id="slide-tracker" style="font-weight: bold; color: var(--primary); background: #f0fdf4; padding: 4px 12px; border-radius: 20px; border: 1px solid #bbf7d0; font-size: 0.85em;">Slide 1 of 12</span>
+    </div>
+
+    <!-- Hardcoded Slides Stage -->
+    <div class="slide-stage">
+      
+      <!-- Slide 1 -->
+      <div class="slide active" id="slide-1">
+        <div class="slide-header">
+          <h3 class="slide-title">1. Course Orientation & Welcome</h3>
+          <span class="std-badge">MN 7.1.4.4 / 8.1.4.4</span>
+        </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Instructor:</strong> Mr. Brady Edward Boehm (Hibbing High School Alum 2015).</li>
+            <li><strong>Academic Credentials:</strong> Calvin University B.A. (2020) | University of Oregon M.S. (2026).</li>
+            <li><strong>Course Focus:</strong> Mastering core decoding mechanics, structural word analysis, close reading, and evidence-based writing.</li>
+            <li><strong>Daily Routine:</strong> Bellringer → Direct Instruction Deck → Resource Reference → Rigorous Checkpoint Form.</li>
+          </ul>
+        </div>
+        <div class="callout-box">
+          <strong style="color: var(--primary-dark);">🎯 Studio Day 1 Goal:</strong> Establish classroom expectations, review standards baseline, and record initial diagnostic responses in Tab 3.
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide" id="slide-2">
+        <div class="slide-header">
+          <h3 class="slide-title">2. Minnesota Academic ELA Standards Baseline</h3>
+          <span class="std-badge">MN 7.1.4.4 & 7.3.1.1</span>
+        </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Standard MN 7.1.4.4 / 8.1.4.4:</strong> Determine or clarify the meaning of unknown and multiple-meaning words using context clues, word roots, and structural patterns.</li>
+            <li><strong>Standard MN 7.3.1.1 / 8.3.1.1:</strong> Write routinely over extended and shorter timeframes for a range of discipline-specific tasks, purposes, and audiences.</li>
+            <li><strong>Daily Measurement:</strong> Every single lesson concludes with a high-rigor Checkpoint Form directly measuring your mastery of these benchmarks.</li>
+          </ul>
+        </div>
+        <div class="callout-box">
+          <strong style="color: var(--primary-dark);">📌 Why Standards Matter:</strong> Standards are not just test codes; they are the exact skill building blocks required for high school and college writing.
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide" id="slide-3">
+        <div class="slide-header">
+          <h3 class="slide-title">3. The O.T.I.S. Studio Framework</h3>
+          <span class="std-badge">Studio Standard</span>
+        </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>O — Objectivity:</strong> Analyze literature and textual evidence without unexamined bias or unsupported assumptions.</li>
+            <li><strong>T — Truthfulness:</strong> Represent source texts accurately and cite all quotes with exact precision.</li>
+            <li><strong>I — Integrity:</strong> Complete all work authentically; academic dishonesty or plagiarism defeats personal skill development.</li>
+            <li><strong>S — Safety & Stewardship:</strong> Maintain a respectful, focused learning studio for all peers and equipment.</li>
+          </ul>
+        </div>
+        <div class="callout-box">
+          <strong style="color: var(--primary-dark);">✍️ Daily Pledge:</strong> You will sign off on the O.T.I.S. Studio Integrity pledge at the end of every Checkpoint Form.
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="slide" id="slide-4">
+        <div class="slide-header">
+          <h3 class="slide-title">4. Phonological Foundations & Word Structure</h3>
+          <span class="std-badge">MN 7.1.4.4</span>
+        </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Phonemes:</strong> The smallest individual units of spoken sound in a language (e.g., the 3 distinct sounds in /k/ /a/ /t/).</li>
+            <li><strong>Graphemes:</strong> The written letters or combinations of letters that represent spoken phonemes.</li>
+            <li><strong>Phonological Awareness:</strong> The ability to recognize, isolate, and manipulate spoken sound structures before reading written words.</li>
+          </ul>
+        </div>
+        <div class="callout-box">
+          <strong style="color: var(--primary-dark);">💡 Key Insight:</strong> Strong readers use sound-pattern recognition to automatically decode complex academic vocabulary.
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="slide" id="slide-5">
+        <div class="slide-header">
+          <h3 class="slide-title">5. Morphological Analysis: Roots & Affixes</h3>
+          <span class="std-badge">MN 7.1.4.4</span>
+        </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Morpheme:</strong> The smallest unit of language that carries distinct meaning.</li>
+            <li><strong>Root/Base Word:</strong> The core element containing the primary meaning (e.g., <em>struct</em> = to build).</li>
+            <li><strong>Prefixes:</strong> Morphemes added to the beginning of a root (e.g., <em>de-</em>, <em>re-</em>, <em>con-</em>).</li>
+            <li><strong>Suffixes:</strong> Morphemes added to the end of a root (e.g., <em>-tion</em>, <em>-ive</em>, <em>-ture</em>).</li>
+          </ul>
+        </div>
+        <div class="callout-box">
+          <strong style="color: var(--primary-dark);">🔍 Deconstruction Strategy:</strong> Strip affixes away from unfamiliar words to isolate the core meaning of the root.
+        </div>
+      </div>
+
+      <!-- Slide 6 -->
+      <div class="slide" id="slide-6">
+        <div class="slide-header">
+          <h3 class="slide-title">6. Direct Evidence & Quote Citation Protocol</h3>
+          <span class="std-badge">MN 7.3.1.1</span>
+        </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Direct Citation:</strong> Pulling verbatim excerpts from text to back up your claims.</li>
+            <li><strong>Citation Formatting:</strong> Always enclose exact words in quotation marks and cite the author or slide source.</li>
+            <li><strong>No Naked Quotes:</strong> Never drop a quote into your response without introducing it or explaining its significance.</li>
+          </ul>
+        </div>
+        <div class="callout-box">
+          <strong style="color: var(--primary-dark);">⚠️ Checkpoint Field Prep:</strong> You will practice exact quote citation in Section 3 of today's Checkpoint Form!
+        </div>
+      </div>
+
+      <!-- Slide 7 -->
+      <div class="slide" id="slide-7">
+        <div class="slide-header">
+          <h3 class="slide-title">7. Textual Analysis & Reader Response</h3>
+          <span class="std-badge">MN 7.1.4.4</span>
+        </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Surface Reading vs. Close Analysis:</strong> Reading for plot gets you started; reading for word choice and structure builds mastery.</li>
+            <li><strong>Annotating Structure:</strong> Circle unknown roots, underline key arguments, and box structural transition markers.</li>
+            <li><strong>Context Clues:</strong> Using surrounding paragraph logic to infer meanings of unfamiliar terms before checking a dictionary.</li>
+          </ul>
+        </div>
+        <div class="callout-box">
+          <strong style="color: var(--primary-dark);">📖 Active Reading:</strong> Good readers keep a pencil in hand to track morphological shifts across texts.
+        </div>
+      </div>
+
+      <!-- Slide 8 -->
+      <div class="slide" id="slide-8">
+        <div class="slide-header">
+          <h3 class="slide-title">8. Guided Practice: Deconstructing Words</h3>
+          <span class="std-badge">MN 7.1.4.4</span>
+        </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Example Word:</strong> <em>Deconstruction</em></li>
+            <li><strong>Prefix:</strong> <em>de-</em> (down, away from)</li>
+            <li><strong>Root:</strong> <em>struct</em> (to build)</li>
+            <li><strong>Suffix:</strong> <em>-tion</em> (state or process of)</li>
+            <li><strong>Synthesized Meaning:</strong> The process of breaking down a built structure into its component parts.</li>
+          </ul>
+        </div>
+        <div class="callout-box">
+          <strong style="color: var(--primary-dark);">🔄 Class Exercise:</strong> Apply this exact 3-step breakdown to the word <em>unsubstantiated</em> in your notes.
+        </div>
+      </div>
+
+      <!-- Slide 9 -->
+      <div class="slide" id="slide-9">
+        <div class="slide-header">
+          <h3 class="slide-title">9. Evaluating Diction & Tone</h3>
+          <span class="std-badge">MN 7.1.4.4</span>
+        </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Diction:</strong> The deliberate choice of words made by an author or speaker.</li>
+            <li><strong>Denotation:</strong> The explicit, dictionary definition of a word.</li>
+            <li><strong>Connotation:</strong> The emotional or cultural associations attached to a word (e.g., <em>frugal</em> vs. <em>cheap</em>).</li>
+          </ul>
+        </div>
+        <div class="callout-box">
+          <strong style="color: var(--primary-dark);">🎯 Diction Spotlight:</strong> Notice how choosing academic morphemes changes a writer's authority and tone.
+        </div>
+      </div>
+
+      <!-- Slide 10 -->
+      <div class="slide" id="slide-10">
+        <div class="slide-header">
+          <h3 class="slide-title">10. Academic Claim Construction Baseline</h3>
+          <span class="std-badge">MN 7.3.1.1</span>
+        </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Claim Definition:</strong> A clear, arguable statement that answers a specific academic prompt.</li>
+            <li><strong>Non-Examples:</strong> "I think words are important" or "Prefixes are cool."</li>
+            <li><strong>Academic Example:</strong> "Understanding Greek and Latin root morphemes enhances decoding efficiency when encountering novel academic vocabulary."</li>
+          </ul>
+        </div>
+        <div class="callout-box">
+          <strong style="color: var(--primary-dark);">✍️ Standard Rule:</strong> Claims must always be supported by explicit textual evidence and clear reasoning.
+        </div>
+      </div>
+
+      <!-- Slide 11 -->
+      <div class="slide" id="slide-11">
+        <div class="slide-header">
+          <h3 class="slide-title">11. Daily Studio Workflow & Routines</h3>
+          <span class="std-badge">Studio Standard</span>
+        </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Step 1:</strong> Complete Bellringer prompt upon entering the studio.</li>
+            <li><strong>Step 2:</strong> Actively track direct instruction slides in Tab 1.</li>
+            <li><strong>Step 3:</strong> Access linked reading reference PDFs in Tab 2 (Resource Hub).</li>
+            <li><strong>Step 4:</strong> Complete all 6 required fields in Tab 3 (Student Work Checkpoint) prior to the exit bell.</li>
+          </ul>
+        </div>
+        <div class="callout-box">
+          <strong style="color: var(--primary-dark);">⏰ Pace Yourself:</strong> Allocate at least 10–12 minutes at the end of class for a thoughtful Checkpoint submission.
+        </div>
+      </div>
+
+      <!-- Slide 12 -->
+      <div class="slide" id="slide-12">
+        <div class="slide-header">
+          <h3 class="slide-title">12. Benchmark Review & Checkpoint Instructions</h3>
+          <span class="std-badge">MN 7.3.1.1</span>
+        </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Day 1 Summary:</strong> We established course standards, reviewed phonological vs. morphological foundations, and outlined citation expectations.</li>
+            <li><strong>Next Action:</strong> Switch to **Tab 3 (Student Work Checkpoint)** now.</li>
+            <li><strong>Requirements:</strong> Fill out all 6 sections completely, cite evidence from today's slides, and check off the O.T.I.S. studio pledge.</li>
+          </ul>
+        </div>
+        <div class="callout-box">
+          <strong style="color: var(--primary-dark);">🏁 Exit Ticket:</strong> Click "Submit Lesson Benchmark Reflection" in Tab 3 once finished!
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Controls -->
+    <div style="display: flex; justify-content: space-between; margin-top: 18px;">
+      <button type="button" class="ctrl-btn" id="prev-btn" onclick="moveSlide(-1)" disabled>⬅️ Previous</button>
+      <button type="button" class="ctrl-btn" id="next-btn" onclick="moveSlide(1)">Next ➡️</button>
+    </div>
+  </div>
+
+  <!-- TAB 2: RESOURCE HUB -->
+  <div id="res-tab" class="card tab-content">
+    <h3 style="margin-top: 0; color: var(--text-dark);">📂 Lesson Resource Hub</h3>
+    <p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 20px;">Download supplementary reading guides, syllabus documents, and course reference materials below.</p>
+    
+    <div class="resource-card">
+      <div>
+        <strong style="color: var(--text-dark);">📄 ELA_Foundations_Syllabus_2026.pdf</strong><br />
+        <small style="color: var(--text-muted);">Course Expectations, Grading Policies & O.T.I.S. Framework Guide</small>
+      </div>
+      <a href="ELA_Foundations_Syllabus_2026.pdf" class="ctrl-btn" download style="text-decoration: none; font-size: 0.85em;">Download ⬇️</a>
+    </div>
+
+    <div class="resource-card">
+      <div>
+        <strong style="color: var(--text-dark);">📄 Morphology_Prefix_Suffix_Chart.pdf</strong><br />
+        <small style="color: var(--text-muted);">Master Reference List of Common Greek & Latin Roots</small>
+      </div>
+      <a href="Morphology_Prefix_Suffix_Chart.pdf" class="ctrl-btn" download style="text-decoration: none; font-size: 0.85em;">Download ⬇️</a>
+    </div>
+  </div>
+
+  <!-- TAB 3: RIGOROUS STUDENT WORK CHECKPOINT -->
+  <div id="form-tab" class="card tab-content">
+    <h3 style="margin-top: 0; color: var(--text-dark);">✍️ Rigorous Student Work Checkpoint</h3>
+    <p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 20px;">Complete all 6 diagnostic and reflection sections below to record your performance benchmark for MN Standard 7.1.4.4 / 7.3.1.1.</p>
+
+    <form onsubmit="event.preventDefault(); alert('Benchmark Checkpoint Submitted Successfully!');">
+      
+      <!-- Field Type 1: short_text -->
+      <div class="form-group">
+        <h4>1. Student Identification (short_text)</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+          <div>
+            <label>Student Full Name <span style="color:red">*</span></label>
+            <input type="text" placeholder="e.g. Jane Doe" required />
+          </div>
+          <div>
+            <label>Date <span style="color:red">*</span></label>
+            <input type="date" required />
+          </div>
+        </div>
+      </div>
+
+      <!-- Field Type 2: rating_scale -->
+      <div class="form-group">
+        <h4>2. Baseline Self-Efficacy (rating_scale)</h4>
+        <label>How confident do you feel in breaking down unfamiliar words into prefixes, roots, and suffixes? <span style="color:red">*</span></label>
+        <div class="rating-options">
+          <label><input type="radio" name="confidence" value="1" required /> 1 - Needs Support</label>
+          <label><input type="radio" name="confidence" value="2" /> 2 - Developing</label>
+          <label><input type="radio" name="confidence" value="3" /> 3 - Competent</label>
+          <label><input type="radio" name="confidence" value="4" /> 4 - Confident</label>
+          <label><input type="radio" name="confidence" value="5" /> 5 - Expert</label>
+        </div>
+      </div>
+
+      <!-- Field Type 3: quote_citation -->
+      <div class="form-group">
+        <h4>3. Textual Evidence & Quote Citation (quote_citation)</h4>
+        <label>Directly quote ONE sentence from today's slides that defines either a <em>phoneme</em>, <em>morpheme</em>, or the <em>O.T.I.S. framework</em>. Use exact quotation marks and cite the slide number. <span style="color:red">*</span></label>
+        <textarea style="height: 80px;" placeholder='e.g. According to Slide 5, "A morpheme is the smallest unit of language that carries distinct meaning."' required></textarea>
+      </div>
+
+      <!-- Field Type 4: select_rubric -->
+      <div class="form-group">
+        <h4>4. Standard Mastery Self-Assessment (select_rubric)</h4>
+        <label>Select the rubric level that best describes your work on today's morphological deconstruction task (MN 7.1.4.4): <span style="color:red">*</span></label>
+        <select required>
+          <option value="">-- Select Rubric Benchmark Level --</option>
+          <option value="4">Level 4 (Exceeds Standard): I can isolate prefixes/roots and explain how they alter academic word meanings.</option>
+          <option value="3">Level 3 (Proficient): I can identify roots and affixes with minor guidance.</option>
+          <option value="2">Level 2 (Developing): I understand roots but struggle to separate prefixes from suffixes.</option>
+          <option value="1">Level 1 (Beginning): I require scaffolded teacher assistance to break down words.</option>
+        </select>
+      </div>
+
+      <!-- Field Type 5: multi_select -->
+      <div class="form-group">
+        <h4>5. Concept Synthesis Identification (multi_select)</h4>
+        <label>Select ALL components below that are part of the O.T.I.S. Studio Framework (Select 4): <span style="color:red">*</span></label>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px;">
+          <label style="font-weight:normal;"><input type="checkbox" name="otis" value="O" /> Objectivity</label>
+          <label style="font-weight:normal;"><input type="checkbox" name="otis" value="T" /> Truthfulness</label>
+          <label style="font-weight:normal;"><input type="checkbox" name="otis" value="I" /> Integrity</label>
+          <label style="font-weight:normal;"><input type="checkbox" name="otis" value="S" /> Safety & Stewardship</label>
+          <label style="font-weight:normal;"><input type="checkbox" name="otis" value="X" /> Speed & Shortcuts</label>
+        </div>
+      </div>
+
+      <!-- Field Type 6: checkbox_group -->
+      <div class="form-group">
+        <h4>6. Studio Integrity & Standards Sign-Off (checkbox_group)</h4>
+        <div class="checkbox-item">
+          <input type="checkbox" id="chk1" required />
+          <label for="chk1" style="font-weight: normal; margin: 0; cursor: pointer;">
+            I confirm that I have reviewed all 12 slides in today's deck and completed my own original reflection work.
+          </label>
+        </div>
+        <div class="checkbox-item">
+          <input type="checkbox" id="chk2" required />
+          <label for="chk2" style="font-weight: normal; margin: 0; cursor: pointer;">
+            I pledge full adherence to the <strong>O.T.I.S. Studio Framework</strong> in all Chisholm ELA coursework under Mr. Brady Edward Boehm.
+          </label>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Lesson Benchmark Reflection</button>
+    </form>
+  </div>
+</div>
+
+<!-- INLINE LIGHTWEIGHT SCRIPT (Navigation & Bellringer Randomizer) -->
+<script>
+  // Bellringer Randomizer Array
+  const bellringers = [
+    "What is the single most important strategy you use when encountering a word you do not recognize in a reading?",
+    "In your own words, why is 'academic integrity' critical when citing evidence from source texts?",
+    "How does identifying root words help you decode unfamiliar vocabulary across different school subjects?",
+    "Why is evaluating an author's word choice (diction) essential before making a formal academic claim?",
+    "How does breaking a word into prefixes and suffixes change your understanding of its core meaning?"
+  ];
+
+  function randomizeBellringer() {
+    const idx = Math.floor(Math.random() * bellringers.length);
+    document.getElementById('bellringer-display').innerText = '"' + bellringers[idx] + '"';
+  }
+
+  // Slide Navigation Logic
+  let currentSlide = 1;
+  const totalSlides = 12;
+
+  function moveSlide(dir) {
+    const newSlide = currentSlide + dir;
+    if (newSlide >= 1 && newSlide <= totalSlides) {
+      document.getElementById('slide-' + currentSlide).classList.remove('active');
+      currentSlide = newSlide;
+      document.getElementById('slide-' + currentSlide).classList.add('active');
+      
+      document.getElementById('slide-tracker').innerText = `Slide ${currentSlide} of ${totalSlides}`;
+      document.getElementById('prev-btn').disabled = (currentSlide === 1);
+      document.getElementById('next-btn').disabled = (currentSlide === totalSlides);
+    }
+  }
+
+  // Tab Switching Logic
+  function switchTab(tabKey) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+    if (tabKey === 'deck') {
+      document.querySelectorAll('.tab-btn')[0].classList.add('active');
+      document.getElementById('deck-tab').classList.add('active');
+    } else if (tabKey === 'res') {
+      document.querySelectorAll('.tab-btn')[1].classList.add('active');
+      document.getElementById('res-tab').classList.add('active');
+    } else if (tabKey === 'form') {
+      document.querySelectorAll('.tab-btn')[2].classList.add('active');
+      document.getElementById('form-tab').classList.add('active');
+    }
+  }
+
+  // Initialize on load
+  window.addEventListener('DOMContentLoaded', () => {
+    randomizeBellringer();
+  });
+</script>
+
+</body>
+</html>
