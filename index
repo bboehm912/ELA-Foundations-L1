@@ -312,24 +312,33 @@
     <!-- Hardcoded Slides Stage -->
     <div class="slide-stage">
       
-      <!-- Slide 1 -->
-      <div class="slide active" id="slide-1">
-        <div class="slide-header">
-          <h3 class="slide-title">1. Course Orientation & Welcome</h3>
-          <span class="std-badge">MN 7.1.4.4 / 8.1.4.4</span>
-        </div>
-        <div class="slide-body">
-          <ul>
-            <li><strong>Instructor:</strong> Mr. Brady Edward Boehm (Hibbing High School Alum 2015).</li>
-            <li><strong>Academic Credentials:</strong> Calvin University B.A. (2020) | University of Oregon M.S. (2026).</li>
-            <li><strong>Course Focus:</strong> Mastering core decoding mechanics, structural word analysis, close reading, and evidence-based writing.</li>
-            <li><strong>Daily Routine:</strong> Bellringer → Direct Instruction Deck → Resource Reference → Rigorous Checkpoint Form.</li>
-          </ul>
-        </div>
-        <div class="callout-box">
-          <strong style="color: var(--primary-dark);">🎯 Studio Day 1 Goal:</strong> Establish classroom expectations, review standards baseline, and record initial diagnostic responses in Tab 3.
-        </div>
-      </div>
+      <!-- Slide 1 (Updated with Photo & Instructor Info) -->
+<div class="slide active" id="slide-1">
+  <div class="slide-header">
+    <h3 class="slide-title">1. Course Orientation & Welcome</h3>
+    <span class="std-badge">MN 7.1.4.4 / 8.1.4.4</span>
+  </div>
+  
+  <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 20px; align-items: center;">
+    <div class="slide-body">
+      <ul>
+        <li><strong>Instructor:</strong> Mr. Brady Edward Boehm (Hibbing High School Alum 2015).</li>
+        <li><strong>Academic Credentials:</strong> Calvin University B.A. (2020) | University of Oregon M.S. (2026).</li>
+        <li><strong>Course Focus:</strong> Mastering core decoding mechanics, structural word analysis, close reading, and evidence-based writing.</li>
+        <li><strong>Daily Routine:</strong> Bellringer → Direct Instruction Deck → Resource Reference → Rigorous Checkpoint Form.</li>
+      </ul>
+    </div>
+    
+    <div style="text-align: center;">
+      <img src="boehm_photo.jpg" alt="Mr. Boehm & Otis" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border);" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80';" />
+      <small style="color: var(--text-muted); display: block; margin-top: 6px; font-weight: 600;">Mr. Boehm & Otis</small>
+    </div>
+  </div>
+
+  <div class="callout-box" style="margin-top: 16px;">
+    <strong style="color: var(--primary-dark);">🎯 Studio Day 1 Goal:</strong> Establish classroom expectations, review standards baseline, and record initial diagnostic responses in Tab 3.
+  </div>
+</div>
 
       <!-- Slide 2 -->
       <div class="slide" id="slide-2">
