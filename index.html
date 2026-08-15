@@ -64,6 +64,7 @@
       object-fit: contain;
     }
 
+    /* Fixed Stamp Box */
     .stamp-box {
       width: 85px;
       height: 85px;
@@ -71,16 +72,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
-      background: var(--primary-light);
-      border: 2px dashed var(--primary);
-      overflow: hidden;
+      position: relative;
     }
 
     .stamp-box img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      display: block;
     }
 
     /* Tabs */
@@ -130,7 +129,7 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 24px;
-      min-height: 440px;
+      min-height: 420px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -138,13 +137,6 @@
 
     .slide { display: none; }
     .slide.active { display: block; }
-
-    .slide-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 20px;
-      align-items: center;
-    }
 
     .slide-header {
       display: flex;
@@ -173,25 +165,10 @@
       color: #334155;
     }
     .slide-body ul { padding-left: 20px; margin: 0; }
-    .slide-body li { margin-bottom: 10px; }
-
-    .slide-visual-card {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-    }
-
-    .visual-icon {
-      font-size: 2.8em;
-      margin-bottom: 8px;
-      display: block;
-    }
+    .slide-body li { margin-bottom: 12px; }
 
     .callout-box {
-      margin-top: 16px;
+      margin-top: 18px;
       padding: 12px 16px;
       border-radius: 6px;
       background: #f0fdf4;
@@ -284,20 +261,32 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      transition: background 0.2s;
     }
     .submit-btn:hover { background: var(--primary-dark); }
+
+    .print-btn {
+      width: 100%;
+      background: #0f172a;
+      color: white;
+      padding: 14px;
+      font-size: 1.05em;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s;
+    }
+    .print-btn:hover { background: #334155; }
 
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
-    /* PRINT STYLES - Clean Print Dialogue Optimization */
+    /* Clean Print Format for PDF Output */
     @media print {
       body { background: white; padding: 0; color: #000; }
-      .header-card, .nav-tabs, .bellringer-box, #deck-tab, #res-tab, .submit-btn, .ctrl-btn { display: none !important; }
+      .header-card, .nav-tabs, .bellringer-box, #deck-tab, #res-tab, .submit-btn, .print-btn, .ctrl-btn { display: none !important; }
       #form-tab { display: block !important; box-shadow: none; padding: 0; border: none; }
       .container { max-width: 100%; width: 100%; margin: 0; }
       .form-group { page-break-inside: avoid; border-bottom: 1px solid #ccc; }
@@ -321,9 +310,9 @@
         </div>
       </div>
       
-      <!-- Classroom Seal Stamp (boehm.photo) -->
+      <!-- Classroom Seal Stamp with Inline SVG Fallback -->
       <div class="stamp-box">
-        <img src="boehm.photo" alt="Mr. Boehm Stamp" onerror="this.onerror=null; this.parentNode.innerHTML='<div style=\'font-size:0.65em;color:#15803d;font-weight:bold;text-align:center;padding:4px;\'>BOEHM STAMP</div>';" />
+        <img src="boehm-stamp.svg" alt="Boehm Classroom Seal" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'45\' fill=\'none\' stroke=\'%2315803d\' stroke-width=\'3\'/><circle cx=\'50\' cy=\'50\' r=\'38\' fill=\'none\' stroke=\'%2315803d\' stroke-width=\'1\' stroke-dasharray=\'4 2\'/><text x=\'50\' y=\'45\' font-family=\'sans-serif\' font-size=\'10\' font-weight=\'bold\' fill=\'%2315803d\' text-anchor=\'middle\'>BOEHM</text><text x=\'50\' y=\'60\' font-family=\'sans-serif\' font-size=\'8\' fill=\'%2315803d\' text-anchor=\'middle\'>APPROVED</text></svg>';" />
       </div>
     </div>
   </div>
@@ -360,48 +349,41 @@
           <h3 class="slide-title">1. Course Orientation & Welcome</h3>
           <span class="std-badge">MN 7.1.4.4 / 8.1.4.4</span>
         </div>
-        <div class="slide-grid">
+        <div style="display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 20px; align-items: center;">
           <div class="slide-body">
             <ul>
               <li><strong>Instructor:</strong> Mr. Brady Edward Boehm (Hibbing High School Alum 2015).</li>
-              <li><strong>Academic Background:</strong> Calvin University B.A. (2020) | University of Oregon M.S. (2026).</li>
-              <li><strong>Course Focus:</strong> Mastering decoding mechanics, structural word analysis, close reading, and evidence-based writing.</li>
+              <li><strong>Academic Credentials:</strong> Calvin University B.A. (2020) | University of Oregon M.S. (2026).</li>
+              <li><strong>Course Focus:</strong> Mastering core decoding mechanics, structural word analysis, close reading, and evidence-based writing aligned to 7th & 8th grade standards.</li>
               <li><strong>Daily Routine:</strong> Bellringer → Direct Instruction Deck → Resource Reference → Rigorous Checkpoint Form.</li>
             </ul>
           </div>
-          <div class="slide-visual-card" style="background: var(--primary-light); border-color: #bbf7d0;">
-            <img src="boehm.photo" alt="Mr. Boehm Photo Stamp" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid var(--primary);" onerror="this.style.display='none';" />
+          <div style="text-align: center; background: var(--primary-light); padding: 16px; border-radius: 10px; border: 1px solid #bbf7d0;">
+            <img src="boehm-stamp.svg" alt="Boehm Classroom Stamp" style="width: 100px; height: 100px; object-fit: contain;" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'45\' fill=\'none\' stroke=\'%2315803d\' stroke-width=\'3\'/><circle cx=\'50\' cy=\'50\' r=\'38\' fill=\'none\' stroke=\'%2315803d\' stroke-width=\'1\' stroke-dasharray=\'4 2\'/><text x=\'50\' y=\'45\' font-family=\'sans-serif\' font-size=\'10\' font-weight=\'bold\' fill=\'%2315803d\' text-anchor=\'middle\'>BOEHM</text><text x=\'50\' y=\'60\' font-family=\'sans-serif\' font-size=\'8\' fill=\'%2315803d\' text-anchor=\'middle\'>APPROVED</text></svg>';" />
             <strong style="color: var(--primary-dark); display: block; margin-top: 8px; font-size: 0.95em;">Mr. Boehm & Otis</strong>
-            <small style="color: var(--text-muted); display: block;">O.T.I.S. Studio Hub</small>
+            <small style="color: var(--text-muted); display: block; margin-top: 2px;">O.T.I.S. Studio Framework</small>
           </div>
         </div>
-        <div class="callout-box">
-          <strong style="color: var(--primary-dark);">🎯 Studio Day 1 Goal:</strong> Establish classroom expectations, review standards baseline, and record initial diagnostic responses in Tab 3.
+        <div class="callout-box" style="margin-top: 16px;">
+          <strong style="color: var(--primary-dark);">🎯 Studio Day 1 Goal:</strong> Establish classroom expectations, review Grade 7–8 standards baseline, and record diagnostic responses in Tab 3.
         </div>
       </div>
 
       <!-- Slide 2 -->
       <div class="slide" id="slide-2">
         <div class="slide-header">
-          <h3 class="slide-title">2. Minnesota ELA Standards Baseline</h3>
+          <h3 class="slide-title">2. Minnesota Academic ELA Standards Baseline</h3>
           <span class="std-badge">MN 7.1.4.4 / 8.1.4.4 & 7.3.1.1 / 8.3.1.1</span>
         </div>
-        <div class="slide-grid">
-          <div class="slide-body">
-            <ul>
-              <li><strong>Standard MN 7.1.4.4 / 8.1.4.4:</strong> Determine or clarify the meaning of unknown and multiple-meaning words using context clues, word roots, and structural patterns.</li>
-              <li><strong>Standard MN 7.3.1.1 / 8.3.1.1:</strong> Write routinely over extended and shorter timeframes for a range of discipline-specific tasks, purposes, and audiences.</li>
-              <li><strong>Daily Benchmark:</strong> Every lesson concludes with a high-rigor Checkpoint Form directly measuring your mastery of these grade-level benchmarks.</li>
-            </ul>
-          </div>
-          <div class="slide-visual-card">
-            <span class="visual-icon">🏛️</span>
-            <strong style="color: var(--primary-dark); font-size: 0.9em;">State Benchmark Target</strong>
-            <p style="font-size: 0.8em; color: var(--text-muted); margin: 4px 0 0 0;">Dual 7th & 8th Grade Rigor Alignment</p>
-          </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Standard MN 7.1.4.4 / 8.1.4.4:</strong> Determine or clarify the meaning of unknown and multiple-meaning words using context clues, Greek/Latin roots, and structural patterns.</li>
+            <li><strong>Standard MN 7.3.1.1 / 8.3.1.1:</strong> Write routinely over extended and shorter timeframes for a range of discipline-specific tasks, purposes, and audiences.</li>
+            <li><strong>Daily Measurement:</strong> Every single lesson concludes with a high-rigor Checkpoint Form directly measuring your mastery of these 7th & 8th grade benchmarks.</li>
+          </ul>
         </div>
         <div class="callout-box">
-          <strong style="color: var(--primary-dark);">📌 Benchmark Value:</strong> Standards are not test codes; they are the exact skill building blocks required for high school writing.
+          <strong style="color: var(--primary-dark);">📌 Why Standards Matter:</strong> Standards are not just test codes; they are the exact skill building blocks required for 7th & 8th grade literacy and beyond.
         </div>
       </div>
 
@@ -409,25 +391,18 @@
       <div class="slide" id="slide-3">
         <div class="slide-header">
           <h3 class="slide-title">3. The O.T.I.S. Studio Framework</h3>
-          <span class="std-badge">MN 7.2.5.5 / 8.2.5.5</span>
+          <span class="std-badge">Studio Standard (7–8)</span>
         </div>
-        <div class="slide-grid">
-          <div class="slide-body">
-            <ul>
-              <li><strong>O — Objectivity:</strong> Analyze literature and textual evidence without unexamined bias or unsupported assumptions.</li>
-              <li><strong>T — Truthfulness:</strong> Represent source texts accurately and cite all quotes with exact precision.</li>
-              <li><strong>I — Integrity:</strong> Complete all work authentically; academic dishonesty defeats personal skill development.</li>
-              <li><strong>S — Safety & Stewardship:</strong> Maintain a respectful, focused learning studio for all peers and equipment.</li>
-            </ul>
-          </div>
-          <div class="slide-visual-card">
-            <span class="visual-icon">🛡️</span>
-            <strong style="color: var(--primary-dark); font-size: 0.9em;">Studio Pillar System</strong>
-            <p style="font-size: 0.8em; color: var(--text-muted); margin: 4px 0 0 0;">Ethics & Classroom Engagement</p>
-          </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>O — Objectivity:</strong> Analyze literature and textual evidence without unexamined bias or unsupported assumptions.</li>
+            <li><strong>T — Truthfulness:</strong> Represent source texts accurately and cite all quotes with exact precision.</li>
+            <li><strong>I — Integrity:</strong> Complete all work authentically; academic dishonesty or plagiarism defeats personal skill development.</li>
+            <li><strong>S — Safety & Stewardship:</strong> Maintain a respectful, focused learning studio for all peers and equipment.</li>
+          </ul>
         </div>
         <div class="callout-box">
-          <strong style="color: var(--primary-dark);">✍️ Daily Pledge:</strong> You will sign off on the O.T.I.S. Studio Integrity pledge at the end of every Checkpoint Form.
+          <strong style="color: var(--primary-dark);">✍️ Pledge:</strong> You will sign off on the O.T.I.S. Studio Integrity pledge at the end of your first Checkpoint Form.
         </div>
       </div>
 
@@ -437,22 +412,15 @@
           <h3 class="slide-title">4. Phonological Foundations & Word Structure</h3>
           <span class="std-badge">MN 7.1.4.4 / 8.1.4.4</span>
         </div>
-        <div class="slide-grid">
-          <div class="slide-body">
-            <ul>
-              <li><strong>Phonemes:</strong> The smallest individual units of spoken sound in a language (e.g., the 3 distinct sounds in /k/ /a/ /t/).</li>
-              <li><strong>Graphemes:</strong> The written letters or combinations of letters that represent spoken phonemes.</li>
-              <li><strong>Phonological Awareness:</strong> Recognizing, isolating, and manipulating spoken sound structures before reading written words.</li>
-            </ul>
-          </div>
-          <div class="slide-visual-card">
-            <span class="visual-icon">🔊</span>
-            <strong style="color: var(--primary-dark); font-size: 0.9em;">Sound-to-Symbol Mechanics</strong>
-            <p style="font-size: 0.8em; color: var(--text-muted); margin: 4px 0 0 0;">Phoneme Isolate & Blend</p>
-          </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Phonemes:</strong> The smallest individual units of spoken sound in a language (e.g., the 3 distinct sounds in /k/ /a/ /t/).</li>
+            <li><strong>Graphemes:</strong> The written letters or combinations of letters that represent spoken phonemes.</li>
+            <li><strong>Phonological Awareness:</strong> The ability to recognize, isolate, and manipulate spoken sound structures before reading written words.</li>
+          </ul>
         </div>
         <div class="callout-box">
-          <strong style="color: var(--primary-dark);">💡 Key Insight:</strong> Strong readers use sound-pattern recognition to automatically decode complex academic vocabulary.
+          <strong style="color: var(--primary-dark);">💡 Key Insight:</strong> Strong readers use sound-pattern recognition to automatically decode complex grade-level vocabulary.
         </div>
       </div>
 
@@ -462,20 +430,13 @@
           <h3 class="slide-title">5. Morphological Analysis: Roots & Affixes</h3>
           <span class="std-badge">MN 7.1.4.4 / 8.1.4.4</span>
         </div>
-        <div class="slide-grid">
-          <div class="slide-body">
-            <ul>
-              <li><strong>Morpheme:</strong> The smallest unit of language that carries distinct meaning.</li>
-              <li><strong>Root/Base Word:</strong> The core element containing the primary meaning (e.g., <em>struct</em> = to build).</li>
-              <li><strong>Prefixes:</strong> Morphemes added to the beginning of a root (e.g., <em>de-</em>, <em>re-</em>, <em>con-</em>).</li>
-              <li><strong>Suffixes:</strong> Morphemes added to the end of a root (e.g., <em>-tion</em>, <em>-ive</em>, <em>-ture</em>).</li>
-            </ul>
-          </div>
-          <div class="slide-visual-card">
-            <span class="visual-icon">🌱</span>
-            <strong style="color: var(--primary-dark); font-size: 0.9em;">Morphology Tree</strong>
-            <p style="font-size: 0.8em; color: var(--text-muted); margin: 4px 0 0 0;">Prefix + Root + Suffix</p>
-          </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Morpheme:</strong> The smallest unit of language that carries distinct meaning.</li>
+            <li><strong>Root/Base Word:</strong> The core element containing the primary meaning (e.g., <em>struct</em> = to build, <em>chron</em> = time).</li>
+            <li><strong>Prefixes:</strong> Morphemes added to the beginning of a root (e.g., <em>de-</em>, <em>re-</em>, <em>con-</em>).</li>
+            <li><strong>Suffixes:</strong> Morphemes added to the end of a root (e.g., <em>-tion</em>, <em>-ive</em>, <em>-ture</em>).</li>
+          </ul>
         </div>
         <div class="callout-box">
           <strong style="color: var(--primary-dark);">🔍 Deconstruction Strategy:</strong> Strip affixes away from unfamiliar words to isolate the core meaning of the root.
@@ -488,19 +449,12 @@
           <h3 class="slide-title">6. Direct Evidence & Quote Citation Protocol</h3>
           <span class="std-badge">MN 7.3.1.1 / 8.3.1.1</span>
         </div>
-        <div class="slide-grid">
-          <div class="slide-body">
-            <ul>
-              <li><strong>Direct Citation:</strong> Pulling verbatim excerpts from text to back up your claims.</li>
-              <li><strong>Citation Formatting:</strong> Always enclose exact words in quotation marks and cite the author or slide source.</li>
-              <li><strong>No Naked Quotes:</strong> Never drop a quote into your response without introducing it or explaining its significance.</li>
-            </ul>
-          </div>
-          <div class="slide-visual-card">
-            <span class="visual-icon">💬</span>
-            <strong style="color: var(--primary-dark); font-size: 0.9em;">Citation Sandwich</strong>
-            <p style="font-size: 0.8em; color: var(--text-muted); margin: 4px 0 0 0;">Lead-in → Quote → Analysis</p>
-          </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Direct Citation:</strong> Pulling verbatim excerpts from text to back up your claims in middle school writing.</li>
+            <li><strong>Citation Formatting:</strong> Always enclose exact words in quotation marks and cite the author or slide source.</li>
+            <li><strong>No Naked Quotes:</strong> Never drop a quote into your response without introducing it or explaining its significance.</li>
+          </ul>
         </div>
         <div class="callout-box">
           <strong style="color: var(--primary-dark);">⚠️ Checkpoint Field Prep:</strong> You will practice exact quote citation in Section 3 of today's Checkpoint Form!
@@ -513,19 +467,12 @@
           <h3 class="slide-title">7. Textual Analysis & Reader Response</h3>
           <span class="std-badge">MN 7.1.4.4 / 8.1.4.4</span>
         </div>
-        <div class="slide-grid">
-          <div class="slide-body">
-            <ul>
-              <li><strong>Surface Reading vs. Close Analysis:</strong> Reading for plot gets you started; reading for word choice and structure builds mastery.</li>
-              <li><strong>Annotating Structure:</strong> Circle unknown roots, underline key arguments, and box structural transition markers.</li>
-              <li><strong>Context Clues:</strong> Using surrounding paragraph logic to infer meanings of unfamiliar terms before checking a dictionary.</li>
-            </ul>
-          </div>
-          <div class="slide-visual-card">
-            <span class="visual-icon">🔍</span>
-            <strong style="color: var(--primary-dark); font-size: 0.9em;">Close Reading Lens</strong>
-            <p style="font-size: 0.8em; color: var(--text-muted); margin: 4px 0 0 0;">Annotate → Infer → Synthesize</p>
-          </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Surface Reading vs. Close Analysis:</strong> Reading for plot gets you started; reading for word choice and structure builds mastery.</li>
+            <li><strong>Annotating Structure:</strong> Circle unknown roots, underline key arguments, and box structural transition markers.</li>
+            <li><strong>Context Clues:</strong> Using surrounding paragraph logic to infer meanings of unfamiliar terms before checking a dictionary.</li>
+          </ul>
         </div>
         <div class="callout-box">
           <strong style="color: var(--primary-dark);">📖 Active Reading:</strong> Good readers keep a pencil in hand to track morphological shifts across texts.
@@ -538,21 +485,14 @@
           <h3 class="slide-title">8. Guided Practice: Deconstructing Words</h3>
           <span class="std-badge">MN 7.1.4.4 / 8.1.4.4</span>
         </div>
-        <div class="slide-grid">
-          <div class="slide-body">
-            <ul>
-              <li><strong>Example Word:</strong> <em>Deconstruction</em></li>
-              <li><strong>Prefix:</strong> <em>de-</em> (down, away from)</li>
-              <li><strong>Root:</strong> <em>struct</em> (to build)</li>
-              <li><strong>Suffix:</strong> <em>-tion</em> (state or process of)</li>
-              <li><strong>Synthesized Meaning:</strong> The process of breaking down a built structure into its component parts.</li>
-            </ul>
-          </div>
-          <div class="slide-visual-card">
-            <span class="visual-icon">🧩</span>
-            <strong style="color: var(--primary-dark); font-size: 0.9em;">Word Breakdown</strong>
-            <p style="font-size: 0.8em; color: var(--text-muted); margin: 4px 0 0 0;">[de] + [struct] + [tion]</p>
-          </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Example Word:</strong> <em>Deconstruction</em></li>
+            <li><strong>Prefix:</strong> <em>de-</em> (down, away from)</li>
+            <li><strong>Root:</strong> <em>struct</em> (to build)</li>
+            <li><strong>Suffix:</strong> <em>-tion</em> (state or process of)</li>
+            <li><strong>Synthesized Meaning:</strong> The process of breaking down a built structure into its component parts.</li>
+          </ul>
         </div>
         <div class="callout-box">
           <strong style="color: var(--primary-dark);">🔄 Class Exercise:</strong> Apply this exact 3-step breakdown to the word <em>unsubstantiated</em> in your notes.
@@ -563,21 +503,14 @@
       <div class="slide" id="slide-9">
         <div class="slide-header">
           <h3 class="slide-title">9. Evaluating Diction & Tone</h3>
-          <span class="std-badge">MN 7.1.4.4 / 8.1.4.4 & 7.1.5.5 / 8.1.5.5</span>
+          <span class="std-badge">MN 7.1.4.4 / 8.1.4.4</span>
         </div>
-        <div class="slide-grid">
-          <div class="slide-body">
-            <ul>
-              <li><strong>Diction:</strong> The deliberate choice of words made by an author or speaker.</li>
-              <li><strong>Denotation:</strong> The explicit, dictionary definition of a word.</li>
-              <li><strong>Connotation:</strong> The emotional or cultural associations attached to a word (e.g., <em>frugal</em> vs. <em>cheap</em>).</li>
-            </ul>
-          </div>
-          <div class="slide-visual-card">
-            <span class="visual-icon">🎭</span>
-            <strong style="color: var(--primary-dark); font-size: 0.9em;">Connotation Spectrum</strong>
-            <p style="font-size: 0.8em; color: var(--text-muted); margin: 4px 0 0 0;">Negative ↔ Neutral ↔ Positive</p>
-          </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Diction:</strong> The deliberate choice of words made by an author or speaker.</li>
+            <li><strong>Denotation:</strong> The explicit, dictionary definition of a word.</li>
+            <li><strong>Connotation:</strong> The emotional or cultural associations attached to a word (e.g., <em>frugal</em> vs. <em>cheap</em>).</li>
+          </ul>
         </div>
         <div class="callout-box">
           <strong style="color: var(--primary-dark);">🎯 Diction Spotlight:</strong> Notice how choosing academic morphemes changes a writer's authority and tone.
@@ -590,19 +523,12 @@
           <h3 class="slide-title">10. Academic Claim Construction Baseline</h3>
           <span class="std-badge">MN 7.3.1.1 / 8.3.1.1</span>
         </div>
-        <div class="slide-grid">
-          <div class="slide-body">
-            <ul>
-              <li><strong>Claim Definition:</strong> A clear, arguable statement that answers a specific academic prompt.</li>
-              <li><strong>Non-Examples:</strong> "I think words are important" or "Prefixes are cool."</li>
-              <li><strong>Academic Example:</strong> "Understanding Greek and Latin root morphemes enhances decoding efficiency when encountering novel academic vocabulary."</li>
-            </ul>
-          </div>
-          <div class="slide-visual-card">
-            <span class="visual-icon">⚖️</span>
-            <strong style="color: var(--primary-dark); font-size: 0.9em;">Claim Formula</strong>
-            <p style="font-size: 0.8em; color: var(--text-muted); margin: 4px 0 0 0;">Specific Topic + Precise Stance</p>
-          </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Claim Definition:</strong> A clear, arguable statement that answers a specific academic prompt.</li>
+            <li><strong>Non-Examples:</strong> "I think words are important" or "Prefixes are cool."</li>
+            <li><strong>Academic Example:</strong> "Understanding Greek and Latin root morphemes enhances decoding efficiency when encountering novel academic vocabulary."</li>
+          </ul>
         </div>
         <div class="callout-box">
           <strong style="color: var(--primary-dark);">✍️ Standard Rule:</strong> Claims must always be supported by explicit textual evidence and clear reasoning.
@@ -613,22 +539,15 @@
       <div class="slide" id="slide-11">
         <div class="slide-header">
           <h3 class="slide-title">11. Daily Studio Workflow & Routines</h3>
-          <span class="std-badge">MN 7.3.1.1 / 8.3.1.1</span>
+          <span class="std-badge">Studio Standard (7–8)</span>
         </div>
-        <div class="slide-grid">
-          <div class="slide-body">
-            <ul>
-              <li><strong>Step 1:</strong> Complete Bellringer prompt upon entering the studio.</li>
-              <li><strong>Step 2:</strong> Actively track direct instruction slides in Tab 1.</li>
-              <li><strong>Step 3:</strong> Access linked reading reference materials in Tab 2 (Resource Hub).</li>
-              <li><strong>Step 4:</strong> Complete all 6 required fields in Tab 3 (Student Work Checkpoint) prior to the exit bell.</li>
-            </ul>
-          </div>
-          <div class="slide-visual-card">
-            <span class="visual-icon">🔄</span>
-            <strong style="color: var(--primary-dark); font-size: 0.9em;">4-Step Studio Loop</strong>
-            <p style="font-size: 0.8em; color: var(--text-muted); margin: 4px 0 0 0;">Bellringer → Deck → Hub → Checkpoint</p>
-          </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Step 1:</strong> Complete Bellringer prompt upon entering the studio.</li>
+            <li><strong>Step 2:</strong> Actively track direct instruction slides in Tab 1.</li>
+            <li><strong>Step 3:</strong> Access linked reading reference PDFs in Tab 2 (Resource Hub).</li>
+            <li><strong>Step 4:</strong> Complete all required fields in Tab 3 (Student Work Checkpoint) prior to the exit bell.</li>
+          </ul>
         </div>
         <div class="callout-box">
           <strong style="color: var(--primary-dark);">⏰ Pace Yourself:</strong> Allocate at least 10–12 minutes at the end of class for a thoughtful Checkpoint submission.
@@ -639,27 +558,19 @@
       <div class="slide" id="slide-12">
         <div class="slide-header">
           <h3 class="slide-title">12. Benchmark Review & Checkpoint Instructions</h3>
-          <span class="std-badge">MN 7.1.4.4 / 8.1.4.4 & 7.3.1.1 / 8.3.1.1</span>
+          <span class="std-badge">MN 7.3.1.1 / 8.3.1.1</span>
         </div>
-        <div class="slide-grid">
-          <div class="slide-body">
-            <ul>
-              <li><strong>Day 1 Summary:</strong> We established course standards, reviewed phonological vs. morphological foundations, and outlined citation expectations.</li>
-              <li><strong>Next Action:</strong> Switch to **Tab 3 (Student Work Checkpoint)** now.</li>
-              <li><strong>Requirements:</strong> Fill out all 6 sections completely, cite evidence from today's slides, and check off the O.T.I.S. studio pledge.</li>
-            </ul>
-          </div>
-          <div class="slide-visual-card" style="background: #f0fdf4; border-color: #bbf7d0;">
-            <span class="visual-icon">🖨️</span>
-            <strong style="color: var(--primary-dark); font-size: 0.9em;">Print Checkpoint</strong>
-            <p style="font-size: 0.8em; color: var(--text-muted); margin: 4px 0 0 0;">Click Print at the bottom of Tab 3 to save or turn in your work!</p>
-          </div>
+        <div class="slide-body">
+          <ul>
+            <li><strong>Day 1 Summary:</strong> We established Grade 7–8 standards, reviewed phonological vs. morphological foundations, and outlined citation expectations.</li>
+            <li><strong>Next Action:</strong> Switch to **Tab 3 (Student Work Checkpoint)** now.</li>
+            <li><strong>Requirements:</strong> Fill out all 6 sections completely, cite evidence from today's slides, and check off the O.T.I.S. studio pledge.</li>
+          </ul>
         </div>
         <div class="callout-box">
-          <strong style="color: var(--primary-dark);">🏁 Exit Ticket:</strong> Open Tab 3, complete your reflection, and click "Print / Save Reflection Checkpoint as PDF".
+          <strong style="color: var(--primary-dark);">🏁 Exit Ticket:</strong> Click "Submit Lesson Benchmark Reflection" or print your work in Tab 3 once finished!
         </div>
       </div>
-
     </div>
 
     <!-- Controls -->
@@ -671,41 +582,23 @@
 
   <!-- TAB 2: RESOURCE HUB -->
   <div id="res-tab" class="card tab-content">
-    <h3 style="margin-top: 0; color: var(--text-dark);">📂 Lesson Resource & Reference Hub</h3>
-    <p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 20px;">Access course references, syllabus documents, and curriculum links below. Customize these items with your preferred drive or document links.</p>
+    <h3 style="margin-top: 0; color: var(--text-dark);">📂 Lesson Resource Hub</h3>
+    <p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 20px;">Download supplementary reading guides, syllabus documents, and course reference materials below.</p>
     
-    <div class="resource-card">
-      <div>
-        <strong style="color: var(--text-dark);">📘 ELA Course Expectations & O.T.I.S. Studio Syllabus</strong><br />
-        <small style="color: var(--text-muted);">Overview of classroom guidelines, grading policies, and standards benchmark expectations.</small>
-      </div>
-      <a href="#" onclick="alert('Place your custom syllabus link or file URL here.'); return false;" class="ctrl-btn" style="text-decoration: none; font-size: 0.85em;">Open Resource 🔗</a>
-    </div>
-
-    <div class="resource-card">
-      <div>
-        <strong style="color: var(--text-dark);">📗 Prefix, Root & Suffix Reference Chart</strong><br />
-        <small style="color: var(--text-muted);">Master reference sheet of high-frequency Greek & Latin roots for word deconstruction.</small>
-      </div>
-      <a href="#" onclick="alert('Place your morphology reference chart link or file URL here.'); return false;" class="ctrl-btn" style="text-decoration: none; font-size: 0.85em;">Open Resource 🔗</a>
-    </div>
-
-    <div class="resource-card">
-      <div>
-        <strong style="color: var(--text-dark);">📙 Minnesota ELA Standards Benchmark Guide (Grades 7 & 8)</strong><br />
-        <small style="color: var(--text-muted);">Official breakdown of language and writing standards evaluated throughout this course.</small>
-      </div>
-      <a href="#" onclick="alert('Place your state standards reference link here.'); return false;" class="ctrl-btn" style="text-decoration: none; font-size: 0.85em;">Open Resource 🔗</a>
-    </div>
+<div class="resource-card">
+  <div>
+    <strong style="color: var(--text-dark);">📄 Hacking_Complex_Vocabulary_2.pdf</strong><br />
+    <small style="color: var(--text-muted);">The Dual Lens Strategy: Hacking Big Words — Acoustic (Syllables) &amp; Semantic (Morphemes) Presentation Deck</small>
   </div>
+  <a href="Hacking_Complex_Vocabulary_2.pdf" class="ctrl-btn" download style="text-decoration: none; font-size: 0.85em;">Download ⬇️</a>
+</div>
 
   <!-- TAB 3: RIGOROUS STUDENT WORK CHECKPOINT -->
   <div id="form-tab" class="card tab-content">
-    <h3 style="margin-top: 0; color: var(--text-dark);">✍️ Student Work Checkpoint & Reflection</h3>
-    <p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 20px;">Complete all 6 diagnostic sections below to record your performance benchmark for MN Standard 7.1.4.4/8.1.4.4 & 7.3.1.1/8.3.1.1.</p>
+    <h3 style="margin-top: 0; color: var(--text-dark);">✍️ Rigorous Student Work Checkpoint</h3>
+    <p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 20px;">Complete all 6 diagnostic and reflection sections below to record your performance benchmark for MN Standard 7.1.4.4 / 8.1.4.4 & 7.3.1.1 / 8.3.1.1.</p>
 
-    <form id="checkpoint-form">
-      
+    <form onsubmit="event.preventDefault(); alert('Benchmark Checkpoint Submitted Successfully!');">
       <!-- Field Type 1: short_text -->
       <div class="form-group">
         <h4>1. Student Identification (short_text)</h4>
@@ -724,7 +617,7 @@
       <!-- Field Type 2: rating_scale -->
       <div class="form-group">
         <h4>2. Baseline Self-Efficacy (rating_scale)</h4>
-        <label>How confident do you feel breaking down unfamiliar words into prefixes, roots, and suffixes? <span style="color:red">*</span></label>
+        <label>How confident do you feel in breaking down unfamiliar words into prefixes, roots, and suffixes? <span style="color:red">*</span></label>
         <div class="rating-options">
           <label><input type="radio" name="confidence" value="1" required /> 1 - Needs Support</label>
           <label><input type="radio" name="confidence" value="2" /> 2 - Developing</label>
@@ -784,15 +677,17 @@
         </div>
       </div>
 
-      <!-- Print Button Triggering Direct Browser Print Dialogue -->
-      <button type="button" onclick="window.print()" class="submit-btn">
+      <button type="submit" class="submit-btn">Submit Lesson Benchmark Reflection</button>
+      
+      <!-- Print/Save Button -->
+      <button type="button" onclick="window.print()" class="print-btn">
         🖨️ Print / Save Reflection Checkpoint as PDF
       </button>
     </form>
   </div>
 </div>
 
-<!-- INLINE SCRIPT (Navigation & Bellringer Randomizer) -->
+<!-- INLINE LIGHTWEIGHT SCRIPT (Navigation & Bellringer Randomizer) -->
 <script>
   // Bellringer Randomizer Array
   const bellringers = [
@@ -847,6 +742,5 @@
     randomizeBellringer();
   });
 </script>
-
 </body>
 </html>
