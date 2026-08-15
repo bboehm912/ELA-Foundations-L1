@@ -6,7 +6,7 @@
   <title>ELA Foundations — Week 1, Day 1 | Chisholm High School</title>
   <style>
     :root {
-      --primary: #15803d;        /* Green Accent */
+      --primary: #15803d;        /* ELA Green Accent */
       --primary-dark: #166534;   /* Dark Green Accent */
       --primary-light: #f0fdf4;  /* Light Green Background */
       --bg-main: #f8fafc;
@@ -64,33 +64,19 @@
       object-fit: contain;
     }
 
-    /* Composite Classroom Seal Header Stamp */
-    .stamp-container {
-      position: relative;
+    .stamp-box {
       width: 80px;
       height: 80px;
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .stamp-container .photo-inner {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      object-fit: cover;
-      z-index: 1;
-    }
-
-    .stamp-container .stamp-bg {
+    .stamp-box img {
       width: 100%;
       height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 2;
-      pointer-events: none;
+      object-fit: contain;
     }
 
     /* Tabs */
@@ -295,10 +281,9 @@
         </div>
       </div>
       
-      <!-- Layered Classroom Seal Stamp -->
-      <div class="stamp-container">
-        <img class="photo-inner" src="boehm_photo.jpg" alt="Mr. Boehm" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80';" />
-        <img class="stamp-bg" src="boehm-stamp.svg" alt="Classroom Seal" onerror="this.style.display='none';" />
+      <!-- Classroom Seal Stamp -->
+      <div class="stamp-box">
+        <img src="boehm-stamp.svg" alt="Classroom Seal" onerror="this.onerror=null; this.parentNode.innerHTML='<div style=\'border:2px dashed #15803d;padding:8px;font-size:0.7em;color:#15803d;font-weight:bold;text-align:center;\'>BOEHM CLASSROOM</div>';" />
       </div>
     </div>
   </div>
@@ -329,14 +314,14 @@
     <!-- Hardcoded Slides Stage -->
     <div class="slide-stage">
       
-      <!-- Slide 1 (With Instructor Info & Photo) -->
+      <!-- Slide 1 -->
       <div class="slide active" id="slide-1">
         <div class="slide-header">
           <h3 class="slide-title">1. Course Orientation & Welcome</h3>
           <span class="std-badge">MN 7.1.4.4 / 8.1.4.4</span>
         </div>
         
-        <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 20px; align-items: center;">
+        <div style="display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 20px; align-items: center;">
           <div class="slide-body">
             <ul>
               <li><strong>Instructor:</strong> Mr. Brady Edward Boehm (Hibbing High School Alum 2015).</li>
@@ -346,9 +331,10 @@
             </ul>
           </div>
           
-          <div style="text-align: center;">
-            <img src="boehm_photo.jpg" alt="Mr. Boehm & Otis" style="width: 100%; max-height: 220px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border);" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80';" />
-            <small style="color: var(--text-muted); display: block; margin-top: 6px; font-weight: 600;">Mr. Boehm & Otis</small>
+          <div style="text-align: center; background: var(--primary-light); padding: 16px; border-radius: 10px; border: 1px solid #bbf7d0;">
+            <img src="boehm-stamp.svg" alt="Boehm Classroom Stamp" style="width: 110px; height: 110px; object-fit: contain;" onerror="this.style.display='none';" />
+            <strong style="color: var(--primary-dark); display: block; margin-top: 8px; font-size: 0.95em;">Mr. Boehm & Otis</strong>
+            <small style="color: var(--text-muted); display: block; margin-top: 2px;">O.T.I.S. Studio Framework</small>
           </div>
         </div>
 
