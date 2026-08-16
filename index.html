@@ -6,15 +6,16 @@
 <title>ELA Foundations — Week 1, Day 1 | Chisholm High School</title>
 <style>
 :root {
-  --primary: #15803d; 
-  --primary-dark: #166534; 
-  --primary-light: #f0fdf4; 
+  --primary: #15803d;
+  --primary-dark: #166534;
+  --primary-light: #f0fdf4;
   --bg-main: #f8fafc;
   --card-bg: #ffffff;
   --text-dark: #0f172a;
   --text-muted: #475569;
   --border: #cbd5e1;
 }
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--bg-main);
@@ -22,7 +23,11 @@ body {
   padding: 20px;
   color: var(--text-dark);
 }
-.container { max-width: 980px; margin: 0 auto; }
+
+.container { 
+  max-width: 980px; 
+  margin: 0 auto; 
+}
 
 /* Header Section */
 .header-card {
@@ -33,17 +38,20 @@ body {
   margin-bottom: 20px;
   border-top: 5px solid var(--primary);
 }
+
 .header-flex {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-} 
+}
+
 .header-left {
   display: flex;
-  align-items: center;
+  align-items: center; 
   gap: 18px;
 }
+
 .logo-box {
   width: 70px;
   height: 70px;
@@ -52,11 +60,14 @@ body {
   justify-content: center;
   flex-shrink: 0;
 }
+
 .logo-box img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
 }
+
+/* Stamp Box */
 .stamp-box {
   width: 85px;
   height: 85px;
@@ -64,11 +75,24 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
-/* Tabs */
-.nav-tabs { display: flex; gap: 10px; margin-bottom: 20px; }
-.tab-btn { 
+.stamp-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Navigation Tabs */
+.nav-tabs { 
+  display: flex; 
+  gap: 10px; 
+  margin-bottom: 20px; 
+}
+
+.tab-btn {
   flex: 1;
   padding: 14px;
   border-radius: 8px;
@@ -80,12 +104,15 @@ body {
   transition: all 0.2s ease;
   color: #334155;
 }
+
 .tab-btn:hover { background: #f1f5f9; }
+
 .tab-btn.active {
   background: var(--primary);
   color: #ffffff;
   border-color: var(--primary);
 }
+
 .card {
   background: var(--card-bg);
   padding: 24px;
@@ -106,33 +133,39 @@ body {
   align-items: center;
   gap: 15px;
 }
+
 .slide-stage {
   background: #f8fafc;
   border: 1px solid var(--border);
   border-radius: 10px;
-  padding: 24px; 
+  padding: 24px;
   min-height: 440px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+
 .slide { display: none; }
 .slide.active { display: block; }
+
 .slide-grid {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 20px;
   align-items: center;
 }
+
 .slide-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   border-bottom: 2px solid var(--primary);
-  padding-bottom: 10px;
+  padding-bottom: 10px; 
   margin-bottom: 16px;
 }
+
 .slide-title { margin: 0; font-size: 1.35em; color: var(--text-dark); }
+
 .std-badge {
   background: #dcfce7;
   color: var(--primary-dark);
@@ -143,12 +176,15 @@ body {
   border: 1px solid #bbf7d0;
   white-space: nowrap;
 }
+
 .slide-body {
   line-height: 1.65;
   color: #334155;
 }
+
 .slide-body ul { padding-left: 20px; margin: 0; }
-.slide-body li { margin-bottom: 10px; } 
+.slide-body li { margin-bottom: 10px; }
+
 .slide-visual-card {
   background: #ffffff;
   border: 1px solid var(--border);
@@ -157,11 +193,13 @@ body {
   text-align: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
+
 .visual-icon {
   font-size: 2.8em;
   margin-bottom: 8px;
   display: block;
 }
+
 .callout-box {
   margin-top: 16px;
   padding: 12px 16px;
@@ -170,16 +208,18 @@ body {
   border-left: 4px solid var(--primary);
   font-size: 0.9em;
 }
+
 .ctrl-btn {
   background: var(--primary);
   color: #ffffff;
-  border: none;
+  border: none; 
   padding: 10px 22px;
   font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s;
 }
+
 .ctrl-btn:hover { background: var(--primary-dark); }
 .ctrl-btn:disabled { background: #94a3b8; cursor: not-allowed; }
 
@@ -188,7 +228,7 @@ body {
   background: #f8fafc;
   border: 1px solid var(--border);
   border-left: 4px solid var(--primary);
-  padding: 16px; 
+  padding: 16px;
   border-radius: 8px;
   margin-bottom: 14px;
   display: flex;
@@ -202,6 +242,7 @@ body {
   padding-bottom: 18px;
   border-bottom: 1px solid #e2e8f0;
 }
+
 .form-group h4 {
   margin: 0 0 10px 0;
   color: var(--primary-dark);
@@ -209,7 +250,9 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+
 label { display: block; font-weight: bold; margin-bottom: 6px; font-size: 0.88em; }
+
 input[type="text"], input[type="date"], select, textarea {
   width: 100%;
   padding: 10px;
@@ -218,11 +261,13 @@ input[type="text"], input[type="date"], select, textarea {
   box-sizing: border-box;
   font-family: inherit;
 }
+
 .rating-options {
   display: flex;
   gap: 12px;
   margin-top: 8px;
 }
+
 .rating-options label {
   font-weight: normal;
   background: #f1f5f9;
@@ -230,7 +275,8 @@ input[type="text"], input[type="date"], select, textarea {
   border-radius: 6px;
   border: 1px solid var(--border);
   cursor: pointer;
-} 
+}
+
 .checkbox-item {
   background: #f8fafc;
   padding: 12px;
@@ -241,6 +287,7 @@ input[type="text"], input[type="date"], select, textarea {
   align-items: flex-start;
   border: 1px solid #e2e8f0;
 }
+
 .submit-btn {
   width: 100%;
   background: var(--primary);
@@ -255,16 +302,34 @@ input[type="text"], input[type="date"], select, textarea {
   align-items: center;
   justify-content: center;
   gap: 8px;
+  margin-bottom: 10px;
+  transition: background 0.2s;
 }
+
 .submit-btn:hover { background: var(--primary-dark); }
+
+.print-btn {
+  width: 100%;
+  background: #0f172a;
+  color: white;
+  padding: 14px;
+  font-size: 1.05em;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.print-btn:hover { background: #334155; }
+
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 
-/* PRINT STYLES - Clean Print Dialogue Optimization */
-@media print {
+/* PRINT STYLES */
+@media print { 
   body { background: white; padding: 0; color: #000; }
-  .tab-content { display: block !important; }
-  .header-card, .nav-tabs, .bellringer-box, #deck-tab, #res-tab, .submit-btn, .ctrl-btn { display: none !important; }
+  .header-card, .nav-tabs, .bellringer-box, #deck-tab, #res-tab, .submit-btn, .print-btn, .ctrl-btn { display: none !important; }
   #form-tab { display: block !important; box-shadow: none; padding: 0; border: none; }
   .container { max-width: 100%; width: 100%; margin: 0; }
   .form-group { page-break-inside: avoid; border-bottom: 1px solid #ccc; }
@@ -272,8 +337,9 @@ input[type="text"], input[type="date"], select, textarea {
 }
 </style>
 </head>
-<body> 
+<body>
 <div class="container">
+
   <!-- Header Card -->
   <div class="header-card">
     <div class="header-flex">
@@ -286,17 +352,12 @@ input[type="text"], input[type="date"], select, textarea {
           <p style="margin: 4px 0 0 0; color: var(--text-muted); font-size: 0.9em;">Course Orientation, Diagnostic Assessment &amp; O.T.I.S. Studio Framework</p>
         </div>
       </div>
-      
-    /* Header Styles */
-    .header-card, .form-card { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin-bottom: 20px; }
-    .header-flex { display: flex; align-items: center; justify-content: space-between; }
-    .header-left { display: flex; align-items: center; gap: 15px; }
-    .header-left img { max-width: 65px; max-height: 65px; object-fit: contain; }
-    
-    /* Stamp with photo overlay */
-    .stamp-container { position: relative; width: 80px; height: 80px; }
-    .stamp-container .stamp-bg { width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 2; pointer-events: none; }
-    .stamp-container .photo-inner { width: 50px; height: 50px; border-radius: 50%; position: absolute; top: 15px; left: 15px; object-fit: cover; z-index: 1; }
+      <!-- Classroom Seal Stamp linked to repo SVG -->
+      <div class="stamp-box">
+        <img src="boehm-stamp.svg" alt="Boehm Classroom Seal" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'><circle cx=\'50\' cy=\'50\' r=\'45\' fill=\'none\' stroke=\'%2315803d\' stroke-width=\'3\'/><circle cx=\'50\' cy=\'50\' r=\'38\' fill=\'none\' stroke=\'%2315803d\' stroke-width=\'1\' stroke-dasharray=\'4 2\'/><text x=\'50\' y=\'45\' font-family=\'sans-serif\' font-size=\'10\' font-weight=\'bold\' fill=\'%2315803d\' text-anchor=\'middle\'>BOEHM</text><text x=\'50\' y=\'60\' font-family=\'sans-serif\' font-size=\'8\' fill=\'%2315803d\' text-anchor=\'middle\'>APPROVED</text></svg>';" />
+      </div>
+    </div>
+  </div>
 
   <!-- Navigation Tabs -->
   <div class="nav-tabs">
@@ -307,15 +368,16 @@ input[type="text"], input[type="date"], select, textarea {
 
   <!-- TAB 1: CURRICULUM SLIDE DECK -->
   <div id="deck-tab" class="card tab-content active">
-    <!-- Randomized Bellringer Banner -->
+    
+    <!-- Bellringer Banner -->
     <div class="bellringer-box">
       <div>
         <strong style="color: var(--primary-dark); font-size: 0.9em;">🔔 Daily Bellringer Writing Prompt</strong>
         <p id="bellringer-display" style="margin: 4px 0 0 0; font-size: 0.92em; font-style: italic;">Loading prompt...</p>
       </div>
-      <button type="button" onclick="randomizeBellringer()" class="ctrl-btn" style="padding: 6px 12px; font-size: 0.8em; white-space: nowrap;">🔀 Shuffle</button> 
+      <button type="button" onclick="randomizeBellringer()" class="ctrl-btn" style="padding: 6px 12px; font-size: 0.8em; white-space: nowrap;">🔀 Shuffle</button>
     </div>
-    
+
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
       <h3 style="margin: 0; font-size: 1.1em;">Unit 1: Foundations of Word Parts &amp; Text Mechanics</h3>
       <span id="slide-tracker" style="font-weight: bold; color: var(--primary); background: #f0fdf4; padding: 4px 12px; border-radius: 20px; border: 1px solid #bbf7d0; font-size: 0.85em;">Slide 1 of 12</span>
@@ -323,6 +385,7 @@ input[type="text"], input[type="date"], select, textarea {
 
     <!-- Slides Stage -->
     <div class="slide-stage">
+      
       <!-- Slide 1 -->
       <div class="slide active" id="slide-1">
         <div class="slide-header">
@@ -351,7 +414,7 @@ input[type="text"], input[type="date"], select, textarea {
 
       <!-- Slide 2 -->
       <div class="slide" id="slide-2">
-        <div class="slide-header"> 
+        <div class="slide-header">
           <h3 class="slide-title">2. Minnesota ELA Standards Baseline</h3>
           <span class="std-badge">MN 7.1.4.4 / 8.1.4.4 &amp; 7.3.1.1 / 8.3.1.1</span>
         </div>
@@ -389,7 +452,7 @@ input[type="text"], input[type="date"], select, textarea {
               <li><strong>S — Safety &amp; Stewardship:</strong> Maintain a respectful, focused learning studio for all peers and equipment.</li>
             </ul>
           </div>
-          <div class="slide-visual-card" style="background: #ffffff; border-color: var(--border);">
+          <div class="slide-visual-card">
             <img src="otis-and-boehm.jpg" alt="Mr. Boehm and Otis" style="width: 100%; height: 140px; object-fit: cover; border-radius: 6px;" onerror="this.parentNode.innerHTML='<span class=\'visual-icon\'>🐾</span><strong style=\'color: var(--primary-dark);\'>Mr. Boehm & Otis</strong>';" />
             <strong style="color: var(--primary-dark); display: block; margin-top: 8px; font-size: 0.9em;">Mr. Boehm &amp; Otis</strong>
             <small style="color: var(--text-muted); display: block; font-size: 0.8em;">O.T.I.S. Framework Namesake</small>
@@ -428,7 +491,7 @@ input[type="text"], input[type="date"], select, textarea {
       <!-- Slide 5 -->
       <div class="slide" id="slide-5">
         <div class="slide-header">
-          <h3 class="slide-title">5. Morphological Analysis: Roots &amp; Affixes</h3> 
+          <h3 class="slide-title">5. Morphological Analysis: Roots &amp; Affixes</h3>
           <span class="std-badge">MN 7.1.4.4 / 8.1.4.4</span>
         </div>
         <div class="slide-grid">
@@ -467,7 +530,7 @@ input[type="text"], input[type="date"], select, textarea {
           </div>
           <div class="slide-visual-card">
             <span class="visual-icon">💬</span>
-            <strong style="color: var(--primary-dark); font-size: 0.9em;">Citation Sandwich</strong> 
+            <strong style="color: var(--primary-dark); font-size: 0.9em;">Citation Sandwich</strong>
             <p style="font-size: 0.8em; color: var(--text-muted); margin: 4px 0 0 0;">Lead-in → Quote → Analysis</p>
           </div>
         </div>
@@ -507,7 +570,7 @@ input[type="text"], input[type="date"], select, textarea {
           <h3 class="slide-title">8. Guided Practice: Deconstructing Words</h3>
           <span class="std-badge">MN 7.1.4.4 / 8.1.4.4</span>
         </div>
-        <div class="slide-grid"> 
+        <div class="slide-grid">
           <div class="slide-body">
             <ul>
               <li><strong>Example Word:</strong> <em>Deconstruction</em></li>
@@ -548,7 +611,7 @@ input[type="text"], input[type="date"], select, textarea {
             <p style="font-size: 0.8em; color: var(--text-muted); margin: 4px 0 0 0;">Negative ↔ Neutral ↔ Positive</p>
           </div>
         </div>
-        <div class="callout-box"> 
+        <div class="callout-box">
           <strong style="color: var(--primary-dark);">🎯 Diction Spotlight:</strong> Notice how choosing academic morphemes changes a writer's authority and tone.
         </div>
       </div>
@@ -589,8 +652,8 @@ input[type="text"], input[type="date"], select, textarea {
             <ul>
               <li><strong>Step 1:</strong> Complete Bellringer prompt upon entering the studio.</li>
               <li><strong>Step 2:</strong> Actively track direct instruction slides in Tab 1.</li>
-              <li><strong>Step 3:</strong> Access linked reading reference materials in Tab 2 (Resource Hub).</li> 
-              <li><strong>Step 4:</strong> Complete all 6 required fields in Tab 3 (Student Work Checkpoint) prior to the exit bell.</li>
+              <li><strong>Step 3:</strong> Access linked reading reference materials in Tab 2 (Resource Hub).</li>
+              <li><strong>Step 4:</strong> Complete all required fields in Tab 3 (Student Work Checkpoint) prior to the exit bell.</li>
             </ul>
           </div>
           <div class="slide-visual-card">
@@ -627,10 +690,11 @@ input[type="text"], input[type="date"], select, textarea {
         <div class="callout-box">
           <strong style="color: var(--primary-dark);">🏁 Exit Ticket:</strong> Open Tab 3, complete your reflection, and click "Print / Save Reflection Checkpoint as PDF".
         </div>
-      </div> 
+      </div>
+
     </div>
 
-    <!-- Slide Deck Controls -->
+    <!-- Controls -->
     <div style="display: flex; justify-content: space-between; margin-top: 18px;">
       <button type="button" class="ctrl-btn" id="prev-btn" onclick="moveSlide(-1)" disabled>⬅️ Previous</button>
       <button type="button" class="ctrl-btn" id="next-btn" onclick="moveSlide(1)">Next ➡️</button>
@@ -641,7 +705,7 @@ input[type="text"], input[type="date"], select, textarea {
   <div id="res-tab" class="card tab-content">
     <h3 style="margin-top: 0; color: var(--text-dark);">📂 Lesson Resource &amp; Reference Hub</h3>
     <p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 20px;">Access course references, syllabus documents, and curriculum slides below.</p>
-
+    
     <div class="resource-card">
       <div>
         <strong style="color: var(--text-dark);">📄 Hacking_Complex_Vocabulary.pdf</strong><br />
@@ -662,7 +726,7 @@ input[type="text"], input[type="date"], select, textarea {
       <div>
         <strong style="color: var(--text-dark);">📙 Minnesota ELA Standards Benchmark Guide (Grades 7 &amp; 8)</strong><br />
         <small style="color: var(--text-muted);">Official breakdown of language and writing standards evaluated throughout this course.</small>
-      </div> 
+      </div>
       <a href="#" onclick="alert('Place your state standards reference link here.'); return false;" class="ctrl-btn" style="text-decoration: none; font-size: 0.85em;">Open Resource 🔗</a>
     </div>
   </div>
@@ -671,8 +735,9 @@ input[type="text"], input[type="date"], select, textarea {
   <div id="form-tab" class="card tab-content">
     <h3 style="margin-top: 0; color: var(--text-dark);">✍️ Student Work Checkpoint &amp; Reflection</h3>
     <p style="color: var(--text-muted); font-size: 0.9em; margin-bottom: 20px;">Complete all 6 diagnostic sections below to record your performance benchmark for MN Standard 7.1.4.4/8.1.4.4 &amp; 7.3.1.1/8.3.1.1.</p>
-    <form id="checkpoint-form">
-      <!-- Field Type 1: short_text -->
+    
+    <form id="checkpoint-form" onsubmit="event.preventDefault(); alert('Benchmark Reflection Submitted Successfully!');">
+      <!-- Section 1 -->
       <div class="form-group">
         <h4>1. Student Identification (short_text)</h4>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
@@ -687,7 +752,7 @@ input[type="text"], input[type="date"], select, textarea {
         </div>
       </div>
 
-      <!-- Field Type 2: rating_scale -->
+      <!-- Section 2 -->
       <div class="form-group">
         <h4>2. Baseline Self-Efficacy (rating_scale)</h4>
         <label>How confident do you feel breaking down unfamiliar words into prefixes, roots, and suffixes? <span style="color:red">*</span></label>
@@ -700,14 +765,14 @@ input[type="text"], input[type="date"], select, textarea {
         </div>
       </div>
 
-      <!-- Field Type 3: quote_citation -->
+      <!-- Section 3 -->
       <div class="form-group">
-        <h4>3. Textual Evidence &amp; Quote Citation (quote_citation)</h4> 
+        <h4>3. Textual Evidence &amp; Quote Citation (quote_citation)</h4>
         <label>Directly quote ONE sentence from today's slides that defines either a <em>phoneme</em>, <em>morpheme</em>, or the <em>O.T.I.S. framework</em>. Use exact quotation marks and cite the slide number. <span style="color:red">*</span></label>
         <textarea style="height: 80px;" placeholder='e.g. According to Slide 5, "A morpheme is the smallest unit of language that carries distinct meaning."' required></textarea>
       </div>
 
-      <!-- Field Type 4: select_rubric -->
+      <!-- Section 4 -->
       <div class="form-group">
         <h4>4. Standard Mastery Self-Assessment (select_rubric)</h4>
         <label>Select the rubric level that best describes your work on today's morphological deconstruction task (MN 7.1.4.4 / 8.1.4.4): <span style="color:red">*</span></label>
@@ -720,7 +785,7 @@ input[type="text"], input[type="date"], select, textarea {
         </select>
       </div>
 
-      <!-- Field Type 5: multi_select -->
+      <!-- Section 5 -->
       <div class="form-group">
         <h4>5. Concept Synthesis Identification (multi_select)</h4>
         <label>Select ALL components below that are part of the O.T.I.S. Studio Framework (Select 4): <span style="color:red">*</span></label>
@@ -733,7 +798,7 @@ input[type="text"], input[type="date"], select, textarea {
         </div>
       </div>
 
-      <!-- Field Type 6: checkbox_group -->
+      <!-- Section 6 -->
       <div class="form-group">
         <h4>6. Studio Integrity &amp; Standards Sign-Off (checkbox_group)</h4>
         <div class="checkbox-item">
@@ -750,15 +815,15 @@ input[type="text"], input[type="date"], select, textarea {
         </div>
       </div>
 
-      <!-- Print Button Triggering Direct Browser Print Dialogue -->
-      <button type="button" onclick="window.print()" class="submit-btn">
-        🖨️ Print / Save Reflection Checkpoint as PDF
-      </button>
+      <!-- Submit and Print Action Triggers -->
+      <button type="submit" class="submit-btn">Submit Lesson Benchmark Reflection</button>
+      <button type="button" onclick="window.print()" class="print-btn">🖨️ Print / Save Reflection Checkpoint as PDF</button>
     </form>
   </div>
+
 </div>
 
-<!-- INLINE SCRIPT (Navigation, Tabs & Bellringer Randomizer) -->
+<!-- INLINE SCRIPT -->
 <script>
 // Bellringer Randomizer Array
 const bellringers = [
@@ -781,7 +846,7 @@ const totalSlides = 12;
 function moveSlide(dir) {
   const newSlide = currentSlide + dir;
   if (newSlide >= 1 && newSlide <= totalSlides) {
-    document.getElementById('slide-' + currentSlide).classList.remove('active'); 
+    document.getElementById('slide-' + currentSlide).classList.remove('active');
     currentSlide = newSlide;
     document.getElementById('slide-' + currentSlide).classList.add('active');
     document.getElementById('slide-tracker').innerText = `Slide ${currentSlide} of ${totalSlides}`;
@@ -794,6 +859,7 @@ function moveSlide(dir) {
 function switchTab(tabKey) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  
   if (tabKey === 'deck') {
     document.querySelectorAll('.tab-btn')[0].classList.add('active');
     document.getElementById('deck-tab').classList.add('active');
